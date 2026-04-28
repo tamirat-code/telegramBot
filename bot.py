@@ -16,7 +16,7 @@ from zoneinfo import ZoneInfo
 # CONFIG
 # =========================
 
-TOKEN = os.getenv("BOT_TOKEN")  # set this in your environment
+TOKEN = os.getenv("BOT_TOKEN")  
 DB_NAME = "users.db"
 
 MESSAGES = [
