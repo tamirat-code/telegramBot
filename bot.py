@@ -15,7 +15,8 @@ from zoneinfo import ZoneInfo
 # =========================
 # CONFIG
 # =========================
-
+import logging
+logging.basicConfig(level=logging.INFO)
 TOKEN = os.getenv("BOT_TOKEN")  
 DB_NAME = "users.db"
 
@@ -123,4 +124,8 @@ def main():
     app.run_polling()
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print("BOT CRASH ERROR:", e)
+        raise
