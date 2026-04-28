@@ -11,7 +11,7 @@ from telegram.ext import (
     ContextTypes,
     filters,
 )
-
+from zoneinfo import ZoneInfo
 # =========================
 # CONFIG
 # =========================
@@ -115,9 +115,9 @@ def main():
     # schedule (UTC time!)
     job_queue = app.job_queue
     job_queue.run_daily(
-        send_good_morning,
-        time=time(hour=1, minute=0)  
-    )
+    send_good_morning,
+    time=time(hour=1, minute=0, tzinfo=ZoneInfo("Africa/Addis_Ababa"))
+)
 
     logging.info("Bot is running...")
     app.run_polling()
