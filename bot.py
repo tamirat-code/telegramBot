@@ -71,6 +71,8 @@ def get_users():
 # HANDLERS
 # =========================
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    print(">>> START HIT")
+    logging.info(">>> START HIT")
     chat_id = update.effective_chat.id
     add_user(chat_id)
     logging.info("START COMMAND TRIGGERED")  # IMPORTANT TEST LINE
@@ -99,6 +101,7 @@ async def send_good_morning(context: ContextTypes.DEFAULT_TYPE):
 # BOT RUNNER
 # =========================
 def run_bot():
+    logging.info(">>> BOT STARTING NOW")
     if not TOKEN:
         raise ValueError("BOT_TOKEN missing")
 
