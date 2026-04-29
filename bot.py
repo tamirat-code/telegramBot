@@ -84,7 +84,7 @@ async def save_user_messages(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
 async def send_good_morning(context: ContextTypes.DEFAULT_TYPE):
     users = get_users()
-
+    logging.info("Morning job triggered")
     if not users:
         logging.info("No users to send messages to.")
         return
@@ -117,7 +117,7 @@ def main():
     job_queue = app.job_queue
     job_queue.run_daily(
     send_good_morning,
-    time=time(hour=1, minute=0, tzinfo=ZoneInfo("Africa/Addis_Ababa"))
+    time=time(hour=4, minute=0, tzinfo=ZoneInfo("Africa/Addis_Ababa"))
 )
 
     logging.info("Bot is running...")
