@@ -3,8 +3,8 @@ import random
 import logging
 import sqlite3
 from datetime import time
-from telegram import Update
-from telegram.ext import (
+from telegram import Update # type: ignore
+from telegram.ext import ( # type: ignore
     ApplicationBuilder,
     CommandHandler,
     MessageHandler,
@@ -16,6 +16,19 @@ from zoneinfo import ZoneInfo
 # CONFIG
 # =========================
 import logging
+from flask import Flask
+import threading
+
+web_app = Flask(__name__)
+
+@web_app.route("/")
+def home():
+    return "Bot is alive"
+
+def run_web():
+    web_app.run(host="0.0.0.0", port=10000)
+
+threading.Thread(target=run_web).start()
 logging.basicConfig(level=logging.INFO)
 TOKEN = os.getenv("BOT_TOKEN")  
 DB_NAME = "users.db"
