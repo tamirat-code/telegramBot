@@ -112,10 +112,7 @@ def run_bot():
     app.add_handler(CommandHandler("start", start))
 
     job_queue = app.job_queue
-    job_queue.run_daily(
-        send_good_morning,
-        time=time(hour=1, minute=0, tzinfo=ZoneInfo("Africa/Addis_Ababa"))
-    )
+   job_queue.run_repeating(send_good_morning, interval=60, first=10)
 
     logging.info("Bot is running...")
     app.run_polling()
